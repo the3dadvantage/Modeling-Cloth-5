@@ -1,0 +1,35 @@
+schema_version = "1.0.0"
+
+id = "modeling_cloth"
+name = "Modeling Cloth 5"
+version = "0.9.0"
+tagline = "Cloth simulation you can keep modelling with"
+maintainer = "Rich Colburn <the3dadvantage@gmail.com>"
+type = "add-on"
+website = "https://github.com/the3dadvantage/modeling-cloth"
+
+# Windows only: the solver and collision libraries are compiled DLLs.
+platforms = ["windows-x64"]
+
+tags = ["Physics", "Modeling"]
+
+blender_version_min = "5.0.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+# Bundled so magnetic targets work on a machine that cannot pip-install
+# anything.  The build keeps this list in step with addon/wheels; refresh the
+# files with  tools/build_addon.py --fetch-wheels
+wheels = ["./wheels/scipy-1.18.1-cp313-cp313-win_amd64.whl"]
+
+[permissions]
+files = "Read and write simulation caches next to the .blend file"
+
+[build]
+paths_exclude_pattern = [
+  "__pycache__/",
+  "*.pyc",
+  ".git/",
+  "*.blend",
+  "*.blend[0-9]",
+]
